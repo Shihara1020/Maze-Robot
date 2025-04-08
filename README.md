@@ -24,11 +24,8 @@ An autonomous robot that navigates complex mazes using sensor fusion and pathfin
 ## 🛠️ Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/maze-solving-robot.git
+git clone https://github.com/Shihara1020/Maze-Robot.git
 cd maze-solving-robot
-
-# Install dependencies
-pip install -r requirements.txt
 
 # For ROS simulation (optional)
 catkin_make
