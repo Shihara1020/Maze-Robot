@@ -10,7 +10,7 @@ import Constant as const
 def main():
     #initial setup
     pygame.init()
-    width,height=10,10
+    width,height=16,16
     screen=pygame.display.set_mode((800,600))
     pygame.display.set_caption("Maze robot simulator")
 
