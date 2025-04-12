@@ -6,6 +6,7 @@ This is a Python-based maze-solving robot simulator built using `pygame`. The ro
 
 ## 🧩 Features
 
+
 - Random maze generation using DFS
 - Robot simulation with path visualization
 - Pygame-based graphical interface
