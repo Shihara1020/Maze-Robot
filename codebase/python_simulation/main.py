@@ -16,7 +16,7 @@ def main():
     
     #show instruction
     SI.show_instructions(screen)
-
+    #TEST
 
     #Generate the random maze
     maze=GR.genearte_simple_maze(width,height)
