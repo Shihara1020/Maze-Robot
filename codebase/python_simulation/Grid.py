@@ -41,3 +41,10 @@ class MazeGrid:
     
     def get_cell(self,i,j):
         return self.grid[i][j]
+    
+    def reset_visited(self):
+        for i in range(self.height):
+            for j in range(self.width):
+                self.grid[i][j].visited = False
+                self.grid[i][j].on_path = False
+    

@@ -53,17 +53,32 @@ class GraphicEngine:
 
     def draw_robot(self,robot:Robot.robot):
         pos=index_to_pixel(self.origin,robot.i,robot.j)
-        center=(pos[0]+const.CELL_SIZE//2,pos[1]+const.CELL_SIZE//3)
+        center=(pos[0]+const.CELL_SIZE//2,pos[1]+const.CELL_SIZE//2)
         pygame.draw.circle(self.screen,const.ROBOT_COLOR,center,const.CELL_SIZE//3)
         di,dj=DIR.PIXEL_SPACE_DIRECTION_MAP[robot.orientation]
         end=(center[0]+dj*const.CELL_SIZE//2,center[1]+di*const.CELL_SIZE//2)
         pygame.draw.line(self.screen,(0,0,0),center,end,2)
 
-    def draw_final_path(self,robot:Robot.robot):
-        for x,y in robot.path:
-            pos=index_to_pixel(self.origin,x,y)
-            center=(pos[0]+const.CELL_SIZE//2,pos[1]+const.CELL_SIZE//3)
-            pygame.draw.circle(self.screen,const.FINAL_PATH_COLOUR,center,const.CELL_SIZE//5)
+    def draw_final_path(self, robot: Robot):
+        """Draw the final path taken by the robot"""
+        for idx, (x, y) in enumerate(robot.path):
+            pos = index_to_pixel(self.origin, x, y)
+            center = (pos[0] + const.CELL_SIZE // 2, pos[1] + const.CELL_SIZE // 2)
+            
+            # Draw line connecting path points
+            if idx > 0:
+                prev_x, prev_y = robot.path[idx-1]
+                prev_pos = index_to_pixel(self.origin, prev_x, prev_y)
+                prev_center = (prev_pos[0] + const.CELL_SIZE // 2, prev_pos[1] + const.CELL_SIZE // 2)
+                pygame.draw.line(self.screen, const.FINAL_PATH_COLOR, prev_center, center, 2)
+            
+            # Draw circle at each path point
+            pygame.draw.circle(self.screen, const.FINAL_PATH_COLOR, center, const.CELL_SIZE // 5)
+            
+            # Number the steps
+            if len(robot.path) <= 50:  # Only show numbers if not too many steps
+                text = self.font.render(str(idx), True, const.TEXT_COLOR)
+                self.screen.blit(text, (center[0] - 5, center[1] - 5))
 
 
 

@@ -11,3 +11,11 @@ PIXEL_SPACE_DIRECTION_MAP={
     direction.EAST:(0,1),
     direction.WEST:(0,-1),
 }
+
+# Opposite directions for backtracking
+OPPOSITE_DIRECTION = {
+    direction.NORTH: direction.SOUTH,
+    direction.SOUTH: direction.NORTH,
+    direction.EAST: direction.WEST,
+    direction.WEST: direction.EAST
+}
